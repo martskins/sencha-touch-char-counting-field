@@ -85,8 +85,6 @@ Ext.define('Ext.ux.CharCountingField',{
 		this.add({
 			xtype:'label',
 			height:0,
-			name:'charcountlabel',
-			align:'right',
 			margin:'-20 10 20 0',
 			style:'text-align:right',
 			html:'150'
