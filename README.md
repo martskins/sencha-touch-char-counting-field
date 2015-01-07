@@ -14,6 +14,7 @@ Usage
 	charCounterFontSize: 15 //Counter font size in pixels. Defaults to 10
 }
 ```
+![Ext.ux.CharCountingField screenshot](http://imageshack.com/a/img540/9952/DK0CVl.jpg)
 
 ```javascript
 var myCharCountingField = Ext.create('Ext.ux.CharCountingField');
