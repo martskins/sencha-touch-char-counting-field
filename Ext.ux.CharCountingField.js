@@ -45,8 +45,15 @@ var changeLabelFontColor = function(me){
 		s = 0;
 		v = 0;
 	}
+
+	var counterMax = me.getMaxLength() ? me.getMaxLength() : '&infin;';
 	me.up('container').down('label').setStyle('text-align:right; color:'+hsv2rgb(h,s,v)+'; font-size:'+me.up('container').config.charCounterFontSize+'px;')
-	me.up('container').down('label').setHtml(charsLeft+'/'+me.getMaxLength());
+	if(me.getMaxLength() == null){
+		charsLeft = '&infin;';
+		me.up('container').config.charCounterFontSize += 8;
+		me.up('container').down('label').setStyle('text-align:right; color:green; font-size:' + me.up('container').config.charCounterFontSize + 'px;');
+	}
+	me.up('container').down('label').setHtml(charsLeft+'/'+counterMax);
 }
 
 Ext.define('Ext.ux.CharCountingField',{
@@ -60,7 +67,9 @@ Ext.define('Ext.ux.CharCountingField',{
 		gradientCounter:true,
 		charCounterFontSize:10,
 		fieldType:'textareafield',
-		items:[] //Add items on initConfig
+		items:[
+			
+		]
 	},
 	initConfig:function(me){
 		this.callParent(arguments);
@@ -72,7 +81,6 @@ Ext.define('Ext.ux.CharCountingField',{
 			xtype:this.config.fieldType,
 			width:'100%',
 			margin:'0 0 0 0',
-			maxLength:150,
 			listeners:{
 				change:function(me, e){
 					changeLabelFontColor(me);
