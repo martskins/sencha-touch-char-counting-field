@@ -60,9 +60,13 @@ Ext.define('Ext.ux.CharCountingField',{
 		gradientCounter:true,
 		charCounterFontSize:10,
 		fieldType:'textareafield',
-		items:[
-			{
-				xtype:'textfield',
+		items:[] //Add items on initConfig
+	},
+	initConfig:function(me){
+		this.callParent(arguments);
+		if(this.config.fieldType == 'textareafield' || this.config.fieldType == 'textfield'){
+			this.add({
+				xtype:this.config.fieldType,
 				width:'100%',
 				margin:'0 0 0 0',
 				maxLength:150,
@@ -75,21 +79,8 @@ Ext.define('Ext.ux.CharCountingField',{
 						changeLabelFontColor(me);
 					}
 				}
-			},{
-				xtype:'textareafield',
-				width:'100%',
-				margin:'0 0 0 0',
-				maxLength:150,
-				hidden:true,
-				listeners:{
-					change:function(me, e){
-						changeLabelFontColor(me);
-					},
-					keyup:function(me, e){
-						changeLabelFontColor(me);
-					}
-				}
-			},{
+			});
+			this.add({
 				xtype:'label',
 				height:0,
 				name:'charcountlabel',
@@ -97,11 +88,9 @@ Ext.define('Ext.ux.CharCountingField',{
 				margin:'-20 10 20 0',
 				style:'text-align:right',
 				html:'150'
-			}
-		]
-	},
-	initConfig:function(me){
-		this.callParent(arguments);
+			});
+			this.down(this.config.fieldType).show();
+		}
 		if(this.config.maxHeight){
 			this.down(this.config.fieldType).setMaxHeight(this.config.maxHeight);
 		}
@@ -115,9 +104,7 @@ Ext.define('Ext.ux.CharCountingField',{
 		if(this.config.placeHolder){
 			this.down(this.config.fieldType).setPlaceHolder(this.config.placeHolder);
 		}
-		if(this.config.fieldType == 'textareafield' || this.config.fieldType == 'textfield'){
-			this.down(this.config.fieldType).show();
-		}
+		
 	},
 	setValue: function(value){
 		this.down(this.config.fieldType).setValue(value);
