@@ -5,7 +5,7 @@ Usage
 ```javascript
 {
 	xtype:'charcountingfield',
-	maxLength:300,
+	maxLength:300, //if none is specified, the field will take "infinite" chars
 	maxHeight:200,
 	name:'myname',
 	placeHolder:'My placeholder',
