@@ -64,33 +64,34 @@ Ext.define('Ext.ux.CharCountingField',{
 	},
 	initConfig:function(me){
 		this.callParent(arguments);
-		if(this.config.fieldType == 'textareafield' || this.config.fieldType == 'textfield'){
-			this.add({
-				xtype:this.config.fieldType,
-				width:'100%',
-				margin:'0 0 0 0',
-				maxLength:150,
-				hidden:true,
-				listeners:{
-					change:function(me, e){
-						changeLabelFontColor(me);
-					},
-					keyup:function(me, e){
-						changeLabelFontColor(me);
-					}
-				}
-			});
-			this.add({
-				xtype:'label',
-				height:0,
-				name:'charcountlabel',
-				align:'right',
-				margin:'-20 10 20 0',
-				style:'text-align:right',
-				html:'150'
-			});
-			this.down(this.config.fieldType).show();
+		if(this.config.fieldType != 'textareafield' && this.config.fieldType != 'textfield'){
+			this.config.fieldType = 'textareafield';
 		}
+
+		this.add({
+			xtype:this.config.fieldType,
+			width:'100%',
+			margin:'0 0 0 0',
+			maxLength:150,
+			listeners:{
+				change:function(me, e){
+					changeLabelFontColor(me);
+				},
+				keyup:function(me, e){
+					changeLabelFontColor(me);
+				}
+			}
+		});
+		this.add({
+			xtype:'label',
+			height:0,
+			name:'charcountlabel',
+			align:'right',
+			margin:'-20 10 20 0',
+			style:'text-align:right',
+			html:'150'
+		});
+
 		if(this.config.maxHeight){
 			this.down(this.config.fieldType).setMaxHeight(this.config.maxHeight);
 		}
