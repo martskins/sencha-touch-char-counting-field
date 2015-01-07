@@ -115,7 +115,7 @@ Ext.define('Ext.ux.CharCountingField',{
 		if(this.config.placeHolder){
 			this.down(this.config.fieldType).setPlaceHolder(this.config.placeHolder);
 		}
-		if(this.config.fieldType){
+		if(this.config.fieldType == 'textareafield' || this.config.fieldType == 'textfield'){
 			this.down(this.config.fieldType).show();
 		}
 	},
