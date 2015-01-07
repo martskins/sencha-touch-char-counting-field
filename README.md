@@ -10,9 +10,11 @@ Usage
 	name:'myname',
 	placeHolder:'My placeholder',
 	fieldType:'textareafield', //either textareafield or textfield. Defaults to textareafield
-	gradientCounter: true //true to use green to red gradient font color in counter, false to use black colored fonts. Defaults to true
+	gradientCounter: true, //true to use green to red gradient font color in counter, false to use black colored fonts. Defaults to true
+	charCounterFontSize: 15 //Counter font size in pixels. Defaults to 10
 }
 ```
+
 ```javascript
 var myCharCountingField = Ext.create('Ext.ux.CharCountingField');
 myCharCountingField.getRemainingChars(); //returns the remaining chars to reach the max
