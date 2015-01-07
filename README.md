@@ -7,7 +7,7 @@ Usage
 	xtype:'charcountingfield',
 	maxLength:300,
 	maxHeight:200,
-	name:'fieldname',
+	name:'myname',
 	placeHolder:'My placeholder',
 	fieldType:'textareafield', //either textareafield or textfield. Defaults to textareafield
 	gradientCounter: true //true to use green to red gradient font color in counter, false to use black colored fonts. Defaults to true
